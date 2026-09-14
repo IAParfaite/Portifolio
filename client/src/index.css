@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Theme tokens ----
+   :root = light, .dark = dark. Base surfaces are CSS vars so every
+   bg-base-* class flips automatically when the `.dark` class toggles. */
+:root {
+  /* warm paper light mode */
+  --base-950: 250 246 242; /* page background */
+  --base-900: 244 238 231; /* nav / raised surfaces */
+  --base-800: 255 255 255; /* cards */
+  --base-700: 228 216 204; /* image placeholders / tracks */
+}
+
+.dark {
+  /* Engie Designs "Deep Tones" surfaces — Black Sheep + Black Rooster */
+  --base-950: 15 13 13; /* Black Sheep — page background */
+  --base-900: 20 17 16; /* nav / raised surfaces */
+  --base-800: 31 24 22; /* cards (rooster-leaning) */
+  --base-700: 58 30 28; /* image placeholders / tracks */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-base-950 font-body text-slate-600 dark:text-slate-300;
+  }
+  /* Keep anchored sections clear of the sticky navbar */
+  section[id],
+  [id="top"] {
+    scroll-margin-top: 5rem;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-[#1C1513] dark:text-[#F5EBDD];
+  }
+  ::selection {
+    @apply bg-accent-paper/80 text-[#16100D];
+  }
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-base-950;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-base-700 hover:bg-accent-paper/60;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-6 md:px-10;
+  }
+  .section {
+    @apply py-section;
+  }
+  .text-gradient {
+    color: #2F7CFF;
+  }
+  .glow-ring {
+    @apply shadow-glow;
+  }
+  .card-surface {
+    @apply rounded-2xl border border-slate-200 bg-white backdrop-blur-sm dark:border-white/10 dark:bg-base-800/60;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-accent-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-base-950;
+  }
+
+  /* ---- Semantic theme helpers (flip with .dark) ---- */
+  .text-primary {
+    @apply text-[#1C1513] dark:text-[#F2E6D8];
+  }
+  .text-secondary {
+    @apply text-[#5C4A42] dark:text-[#D3BB9E];
+  }
+  .text-muted {
+    @apply text-[#8C766B] dark:text-[#A78A76];
+  }
+  .border-card {
+    @apply border-slate-200 dark:border-white/10;
+  }
+  .border-card-strong {
+    @apply border-slate-300 dark:border-white/15;
+  }
+  .bg-card {
+    @apply bg-white dark:bg-base-800/60;
+  }
+  .bg-subtle {
+    @apply bg-slate-100/80 dark:bg-white/5;
+  }
+  .bg-subtle-strong {
+    @apply bg-slate-200/70 dark:bg-white/10;
+  }
+
+  /* ---- Premium finishing touches ---- */
+  .spotlight-card {
+    position: relative;
+  }
+  .spotlight-card .spotlight {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background: radial-gradient(
+      320px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(47, 124, 255, 0.16),
+      transparent 65%
+    );
+  }
+  .spotlight-card:hover .spotlight {
+    opacity: 1;
+  }
+}
