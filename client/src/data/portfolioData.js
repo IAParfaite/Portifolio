@@ -2,7 +2,7 @@
 // Replace placeholders with your real name, links, projects, skills and quotes.
 
 export const profile = {
-  name: "Alliance Parfaite Isingizwe",
+  name: "Isingizwe Alliance Parfaite",
   role: "Full-Stack Developer · System Architect · Designer",
   shortTagline: "I design systems, build products, and make complex things feel effortless.",
   bio: "I'm a full-stack developer who bridges engineering, design and architecture. I build fast, human-centered products across the MERN stack — and I care about the clean ERDs and DFDs hiding underneath the interface.",
